@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from "../components/Navbar/Navbar.astro";
+import Main from "../components/Main/Main.astro";
+import Aside from "../components/Aside/Aside.astro";
+import Bottom from "../components/Bottom/Bottom.astro";
+---
+
+<Layout title="News - HomePage">
+	<Navbar />
+	<main >
+		<Main />
+		<Aside />
+		<Bottom />
+	</main>
+</Layout>
+
+<style lang='scss' >
+	main {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 3fr;
+		grid-template-areas:
+				"main"
+				"aside"
+				"bottom";
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			grid-template-areas:
+				"main main aside"
+				"main main aside"
+				"bottom bottom bottom"
+			;
+		}
+	}
+
+
+	.aside	{
+		grid-area: aside;
+
+	}
+	.bottom	{
+		grid-area: bottom;
+
+	}
+</style>
