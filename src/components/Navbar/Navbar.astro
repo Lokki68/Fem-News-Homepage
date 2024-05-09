@@ -1,21 +1,44 @@
 ---
   import { Icon } from 'astro-icon/components'
   import Logo from "./Logo.astro";
+  import NavItem from './NavItem.astro';
 
-
+  const navigationItems = [
+    {
+      id: 1,
+      name: 'Home',
+      link: '#'
+    },
+    {
+      id: 2,
+      name: 'New',
+      link: '#'
+    },
+    {
+      id: 3,
+      name: 'Popular',
+      link: '#'
+    },
+    {
+      id: 4,
+      name: 'Trending',
+      link: '#'
+    },
+    {
+      id: 5,
+      name: 'Categories',
+      link: '#'
+    }
+  ]
 ---
 
 <div class='navbar'>
   <Logo />
 
   <nav class='navigation' >
-    <ul>
-	    <li class='nav-item' >Home</li>
-	    <li class='nav-item' >New</li>
-	    <li class='nav-item' >Popular</li>
-	    <li class='nav-item' >Trending</li>
-	    <li class='nav-item' >Categories</li>
-    </ul>
+    {
+      navigationItems.map(item => <NavItem name={item.name} link={item.link} />)
+    }
   </nav>
   <button class='hamburger-btn '>
 	  <Icon name='icon-menu' size={40} class='menu' />
@@ -23,11 +46,9 @@
   </button>
   <div class="mobile-navigation-container ">
     <nav class='mobile-navigation' >
-      <a href='#' class='nav-item' >Home</a >
-      <a href='#' class='nav-item' >New</a >
-      <a href='#' class='nav-item' >Popular</a >
-      <a href='#' class='nav-item' >Trending</a >
-      <a href='#' class='nav-item' >Categories</a >
+      {
+        navigationItems.map(item => <NavItem name={item.name} link={item.link} />)
+      }
     </nav>
   </div>
 </div>
@@ -40,6 +61,7 @@
 
   .navigation {
     display: none;
+    gap: 1.5rem;
 
     @media (min-width: 768px) {
       display: flex;
@@ -110,15 +132,7 @@
     }
   }
 
-  .nav-item {
-    font-size: 18px;
-    cursor: pointer;
-    transition: var(--transition);
-
-    &:hover {
-      color: var(--soft-red);
-    }
-  }
+  
 </style>
 
 <script>
