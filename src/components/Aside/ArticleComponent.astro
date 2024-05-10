@@ -7,7 +7,7 @@ type Props = {
   border: boolean
 }
 
-const { article, border } = Astro.props
+const { article, border }: Props = Astro.props
 const { title, content} = article
 ---
 
@@ -19,7 +19,7 @@ const { title, content} = article
 <style lang='scss' >
   .article-content {
     color: white;
-    padding: 15gpx 0;
+    padding: 15px 0;
 
     &.border {
       border-top: 1px solid var(--grayish-blue);
