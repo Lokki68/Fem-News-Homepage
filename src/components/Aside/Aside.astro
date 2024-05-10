@@ -1,12 +1,59 @@
 ---
+import ArticleComponent from './ArticleComponent.astro'
+export type Article = {
+	id: number
+	title: string
+	content: string
+}
+
+const articles: Article[] = [
+	{
+		id: 1,
+		title: 'Hydrogen VS Electric Cars',
+		content: 'Will hydrogen-fueled cars ever catch up to EVs?'
+	},
+	{
+		id: 2,
+		title: 'The Downsides of AI Artistry',
+		content: 'What are the possible adverse effects of on-demand AI image generation?'
+	},
+	{
+		id: 3,
+		title: 'Is VC Funding Drying Up?',
+		content: 'Private funding by VC firms is down 50% YOY. We take a look at what that means.'
+	},
+]
 ---
 
 <div class='aside' >
-	<p>Aside Component</p>
+	<h3>New</h3>
+	<div class='article-container'>
+		{
+			articles.map((item) => {
+				const border = item.id % 2 === 0
+				return <ArticleComponent article={item} border={border} />
+			})
+		}
+	</div>
 </div>
 
 <style lang='scss' >
   .aside	{
     grid-area: aside;
+		background-color: var(--very-dark-blue);
+		padding: 20px;
+		margin: 30px 0;
+
+		h3 {
+			font-size: 24px;
+			color: var(--soft-orange)
+		}
+
+		.article-container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
   }
 </style>

@@ -1,12 +1,114 @@
 ---
+  import { Image } from 'astro:assets'
+  import imgDesktopMain from '../../assets/images/image-web-3-desktop.jpg'
+  import imgMobileMain from '../../assets/images/image-web-3-mobile.jpg'
+  const title = "The Bright Future of Web 3.0?"
 ---
 
 <div class='main' >
-  <p>Main Component</p>
+  <Image src={imgDesktopMain} class="desktop-img" alt={title}/>
+  <Image src={imgMobileMain} class="mobile-img" alt={title}/>
+  <div class='container'>
+	  <h2>{title}</h2>
+	  <div class='content' >
+		  <p>
+			  We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people.
+			  But is it really fulfilling its promise?
+		  </p>
+		  <button>Read More</button>
+	  </div>
+  </div>
 </div>
 
 <style lang='scss' >
   .main	{
+    width: 100%;
     grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+
+      h2 {
+        font-weight: var(--fw3);
+        font-size: 32px;
+        width: 60%;
+
+        @media (min-width: 768px) {
+          width: 50%;
+          font-size: 42px;
+        }
+      }
+
+      .content {
+        p {
+          font-size: 18px;
+          line-height: 1.5;
+          color: var(--dark-grayish-blue);
+          margin-bottom: 20px;
+        }
+
+        button {
+          background: var(--soft-red);
+          border: none;
+          padding: 8px 15px;
+          text-transform: uppercase;
+          font-weight: var(--fw2);
+          color: white;
+          width: 200px;
+          font-size: 13px;
+          letter-spacing: .25em;
+          cursor: pointer;
+
+          &:hover, &:focus {
+            background: var(--very-dark-blue);
+          }
+
+          @media (min-width: 768px) {
+            width: 150px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+      }
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
+
+    img {
+
+      &.desktop-img {
+        width: 100%;
+        height: 200px;
+        display: none;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+
+      &.mobile-img {
+        width: 100%;
+        height: 300px;
+
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+
+    }
+
+
   }
+
+  
 </style>

@@ -3,7 +3,13 @@
   import Logo from "./Logo.astro";
   import NavItem from './NavItem.astro';
 
-  const navigationItems = [
+  type NavItem = {
+    id: number
+    name: string
+    link: string
+  }
+
+  const navigationItems: NavItem[]  = [
     {
       id: 1,
       name: 'Home',
