@@ -142,11 +142,15 @@
 </style>
 
 <script>
-  const hbgBtn = document.querySelector('.hamburger-btn')
+  const hbgBtn = document.querySelector('.hamburger-btn') as HTMLButtonElement
   const mobileNavigationContainer = document.querySelector('.mobile-navigation-container')
 
-  hbgBtn.addEventListener('click', () => {
-    hbgBtn.classList.toggle('show')
-    mobileNavigationContainer.classList.toggle('show')
-  })
+  if(!hbgBtn || !mobileNavigationContainer) {
+    console.error('Erreur de chargement')
+  } else {
+    hbgBtn.addEventListener('click', () => {
+      hbgBtn.classList.toggle('show')
+      mobileNavigationContainer.classList.toggle('show')
+    })
+  }
 </script>
